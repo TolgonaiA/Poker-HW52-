@@ -1,7 +1,7 @@
 import Card from './Card/Card';
 import CardDeck from './CardDeck';
 import { Component } from 'react';
-const myDeck = new CardDeck();
+let myDeck = new CardDeck();
 let cards = myDeck.getCards(5);
 console.log(cards);
 
@@ -10,23 +10,46 @@ console.log(cards);
 class App extends Component {
   state = {
     cards: cards
-  }
+  };
+
+
+  changeCards = () => {
+    let newMyDeck = new CardDeck();
+    let newCards = newMyDeck.getCards(5);
+
+    this.setState({
+      cards: newCards
+    })
+  };
+
+
 
   render () {
     return (
-      <div className="playingCards">
-        <div className="playingCards fourColours faceImages">
-          <Card rankVal={this.state.cards[0].rank} rankClass={this.state.cards[0].rankClass} suitClass={this.state.cards[0].suitClass}/>
-          <Card rankVal={this.state.cards[1].rank} rankClass={this.state.cards[1].rankClass} suitClass={this.state.cards[1].suitClass}/>
-          <Card rankVal={this.state.cards[2].rank} rankClass={this.state.cards[2].rankClass} suitClass={this.state.cards[2].suitClass}/>
-          <Card rankVal={this.state.cards[3].rank} rankClass={this.state.cards[3].rankClass} suitClass={this.state.cards[3].suitClass}/>
-          <Card rankVal={this.state.cards[4].rank} rankClass={this.state.cards[4].rankClass} suitClass={this.state.cards[4].suitClass}/>
+      <div className='wrap'>
+        <div className="playingCards">
+          <div className="playingCards fourColours faceImages">
+            {
+              this.state.cards.map(card => {
+                return (
+                  <Card
+                  rankVal={card.rank}
+                  suitVal={card.suitVal}
+                  rankClass={card.rankClass}
+                  suitClass={card.suitClass}
+                  />
+                )
+              })
+            }
+          </div>
+        </div>
+        <div className='btn-wrap'>
+          <button onClick={this.changeCards}>Change cards</button>
         </div>
       </div>
     );
   };
 };
-
 
 
 export default App;
