@@ -6,7 +6,7 @@ class Card extends Component {
     return (
       <div className={`card ${this.props.rankClass} ${this.props.suitClass}`}>
         <span className="rank">{this.props.rankVal}</span>
-        <span className="suit">{this.props.suitVal}</span>
+        <span className="suit"></span>
       </div>
     )
   }
