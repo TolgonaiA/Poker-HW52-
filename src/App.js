@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from './Card/Card';
+import CardDeck from './CardDeck';
+import { Component } from 'react';
+const myDeck = new CardDeck();
+let cards = myDeck.getCards(5);
+console.log(cards);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+
+class App extends Component {
+  state = {
+    cards: cards
+  }
+  
+
+  
+
+
+
+  render () {
+    return (
+      <div className="playingCards">
+        <div className="playingCards fourColours faceImages">
+          <Card rankVal="K" suitVal="&spades;" rankClass="rank-k" suitClass="spades"/>
+        </div>
+      </div>
+    );
+  };
+};
+
+
 
 export default App;
