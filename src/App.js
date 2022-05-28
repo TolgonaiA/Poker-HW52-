@@ -1,9 +1,9 @@
 import Card from './Card/Card';
 import CardDeck from './CardDeck';
+import PokerHand from './PokerHand';
 import { Component } from 'react';
 let myDeck = new CardDeck();
 let cards = myDeck.getCards(5);
-console.log(cards);
 
 
 
@@ -16,12 +16,14 @@ class App extends Component {
   changeCards = () => {
     let newMyDeck = new CardDeck();
     let newCards = newMyDeck.getCards(5);
+    let myHand = new PokerHand(newCards);
+    console.log(myHand.getOutCome())
+
 
     this.setState({
       cards: newCards
     })
   };
-
 
 
   render () {
@@ -50,6 +52,11 @@ class App extends Component {
     );
   };
 };
+
+
+
+
+
 
 
 export default App;
