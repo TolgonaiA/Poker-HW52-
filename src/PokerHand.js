@@ -16,9 +16,11 @@ const getTotalArr = (arr) => {
   return totalArr;
 };
 
-const getHand = (arr) => {
+const getHand = (arr, value) => {
   let hand = '';
-  if (arr.includes(2)&& arr.includes(3)) {
+  if (value === true) {
+    hand = 'flush'
+  } else if (arr.includes(2)&& arr.includes(3)) {
     hand  = 'full house'
   } else if(arr.includes(3) && arr.includes(1)) {
     hand = 'three of a kind'
@@ -30,10 +32,41 @@ const getHand = (arr) => {
     hand = 'four of a kind'
   } else if (arr.includes(1) && arr.length ===5) {
     hand = 'nothing'
-  }
+  } 
   return hand;
 };
 
+
+const getNumArr = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 'J') {
+      arr[i] = 11;
+    } else if (arr[i] === 'Q') {
+      arr[i] = 12;
+    } else if (arr[i] === 'K') {
+      arr[i] = 13;
+    } else if (arr[i] === 'A') {
+      arr[i] = 14;
+    }
+  }
+  return arr;
+};
+
+
+const getSuit = arr => {
+  let result = [];
+  for (let element of arr) {
+    if(!result.includes(element)) {
+      result.push(element);
+    }
+  }
+
+  if (result.length === 1) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 
 
@@ -41,6 +74,7 @@ class PokerHand {
   constructor(arr){
     this.arr = arr;
     this.rankArr = [];
+    this.suit = [];
   };
 
   getOutCome() {
@@ -48,9 +82,19 @@ class PokerHand {
       this.rankArr.push(this.arr[i].rank);
     }
 
-    let ranksArr = getTotalArr(this.rankArr);
+    for (let i = 0; i < this.arr.length; i++) {
+      this.suit.push(this.arr[i].suitVal);
+    }
 
-    return getHand(ranksArr);
+    let numArr = getNumArr(this.rankArr);
+
+    console.log(this.rankArr)
+    console.log(this.suit)
+    let suitStatus = getSuit(this.suit);
+
+    let ranksArr = getTotalArr(numArr);
+
+    return getHand(ranksArr, suitStatus);
   }
 };
 

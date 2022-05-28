@@ -4,24 +4,30 @@ import PokerHand from './PokerHand';
 import { Component } from 'react';
 let myDeck = new CardDeck();
 let cards = myDeck.getCards(5);
+let myHand = new PokerHand(cards);
+let hand = myHand.getOutCome();
 
 
 
 class App extends Component {
   state = {
-    cards: cards
+    cards: cards,
+    hand: hand
   };
 
 
   changeCards = () => {
     let newMyDeck = new CardDeck();
     let newCards = newMyDeck.getCards(5);
+    console.log(newCards)
     let myHand = new PokerHand(newCards);
-    console.log(myHand.getOutCome())
+    let newHand = myHand.getOutCome();
+    console.log(newHand)
 
 
     this.setState({
-      cards: newCards
+      cards: newCards,
+      hand: newHand
     })
   };
 
@@ -48,6 +54,7 @@ class App extends Component {
         <div className='btn-wrap'>
           <button onClick={this.changeCards}>Change cards</button>
         </div>
+        <div className='hand'>{this.state.hand}</div>
       </div>
     );
   };
