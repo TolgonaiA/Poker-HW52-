@@ -2,7 +2,6 @@ const suit = ['spades', 'clubs', 'hearts', 'diams' ];
 const suitPicArr = ['♠','♣','♥','♦'];
 const rank = ['A', 2,3,4,5,6,7,8,9,10,'J','Q','K'];
 
-// const rank = ['A', 9,10,'J'];
 
 
 let totalCards = 52;

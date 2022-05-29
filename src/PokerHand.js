@@ -20,6 +20,10 @@ const getHand = (arr, value) => {
   let hand = '';
   if (value === true) {
     hand = 'flush'
+  } else if (value === true && (arr[0] === 10 && arr[arr.length-1] === 14)) {
+    hand = 'royal flush'
+  } else if (value === true && (arr[arr.length-1] - arr[0] === 4)) {
+    hand = 'straight flush'
   } else if (arr.includes(2)&& arr.includes(3)) {
     hand  = 'full house'
   } else if(arr.includes(3) && arr.includes(1)) {
@@ -30,9 +34,11 @@ const getHand = (arr, value) => {
     hand = 'one pair'
   } else if (arr.includes(4)) {
     hand = 'four of a kind'
-  } else if (arr.includes(1) && arr.length ===5) {
+  } else if (arr.includes(1) && arr.length === 5) {
     hand = 'nothing'
-  } 
+  } else if ((arr[arr.length-1] === 10 & (arr[arr.length-2] - arr[0] === 3)) || ((arr[0] === 10) && (arr[arr.length-1] - arr[0] === 4)) || (arr[arr.length-1] - arr[0] === 4)) {
+    hand = 'straight'
+  }
   return hand;
 };
 
@@ -49,7 +55,7 @@ const getNumArr = (arr) => {
       arr[i] = 14;
     }
   }
-  return arr;
+  return arr.sort((a,b) => a-b);
 };
 
 
@@ -88,8 +94,6 @@ class PokerHand {
 
     let numArr = getNumArr(this.rankArr);
 
-    console.log(this.rankArr)
-    console.log(this.suit)
     let suitStatus = getSuit(this.suit);
 
     let ranksArr = getTotalArr(numArr);

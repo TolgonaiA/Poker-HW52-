@@ -2,6 +2,7 @@ import Card from './Card/Card';
 import CardDeck from './CardDeck';
 import PokerHand from './PokerHand';
 import { Component } from 'react';
+import './App.css';
 let myDeck = new CardDeck();
 let cards = myDeck.getCards(5);
 let myHand = new PokerHand(cards);
@@ -35,8 +36,8 @@ class App extends Component {
   render () {
     return (
       <div className='wrap'>
-        <div className="playingCards">
-          <div className="playingCards fourColours faceImages">
+        <div className="playingCards wrap-block">
+          <div className="playingCards fourColours faceImages cards-block">
             {
               this.state.cards.map(card => {
                 return (
@@ -51,10 +52,10 @@ class App extends Component {
             }
           </div>
         </div>
-        <div className='btn-wrap'>
-          <button onClick={this.changeCards}>Change cards</button>
-        </div>
         <div className='hand'>{this.state.hand}</div>
+        <div className='btn-wrap'>
+          <button className='btn' onClick={this.changeCards}>New Deck</button>
+        </div>
       </div>
     );
   };

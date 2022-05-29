@@ -1,0 +1,40 @@
+.wrap {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.wrap-block {
+  max-width: 50%;
+  background: green;
+  padding: 35px 23px 23px 35px;
+  border-radius: 60px;
+  border: 9px solid rgba(0,0,0,0.5);
+  margin-bottom: 40px;
+}
+
+
+.cards-block {
+  display: flex;
+}
+
+.btn {
+  padding: 7px 15px;
+  cursor: pointer;
+  border: none;
+  background: rgba(60, 255, 0, 0.9);
+  color: rgba(18, 31, 23, 0.932);
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.hand {
+  margin-bottom: 20px;
+  color: blue;
+  text-transform: uppercase;
+  font-size: 2em;
+}
