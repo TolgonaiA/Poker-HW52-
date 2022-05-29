@@ -21,8 +21,16 @@
   display: flex;
 }
 
+.score {
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: brown;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
 .btn {
-  padding: 7px 15px;
+  padding: 12px 25px;
   cursor: pointer;
   border: none;
   background: rgba(60, 255, 0, 0.9);
@@ -30,6 +38,12 @@
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 15px;
+  margin-right: 15px;
+  box-shadow: 2px 3px 7px rgba(0,0,0,0.5);
+}
+
+.btn:active {
+  box-shadow: -2px -3px 7px rgba(0,0,0,0.5);
 }
 
 .hand {
