@@ -35,7 +35,7 @@ const getHand = (arr, value) => {
   } else if (arr.includes(4)) {
     hand = 'four of a kind'
   } else if (arr.includes(1) && arr.length === 5) {
-    hand = 'nothing'
+    hand = 'try again'
   } else if ((arr[arr.length-1] === 10 & (arr[arr.length-2] - arr[0] === 3)) || ((arr[0] === 10) && (arr[arr.length-1] - arr[0] === 4)) || (arr[arr.length-1] - arr[0] === 4)) {
     hand = 'straight'
   }
