@@ -103,6 +103,7 @@ class App extends Component {
               this.state.cards.map(card => {
                 return (
                   <Card
+                  key={card.rankClass + card.suitClass}
                   rankVal={card.rank}
                   suitVal={card.suitVal}
                   rankClass={card.rankClass}
